@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Joke</title>
+  <style>
+    .joke-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      width: 300px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .joke-card:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+  <script>
+    function Punchline() {
+      const setupElement = document.getElementById("setup");
+      const punchlineElement = document.getElementById("punchline");
+      if (setupElement.style.display === "none") {
+        setupElement.style.display = "block";
+        punchlineElement.style.display = "none";
+      } else {
+        setupElement.style.display = "none";
+        punchlineElement.style.display = "block";
+      }
+    }
+  </script>
+</head>
+<body>
+<h1>Random Joke</h1>
+<div class="joke-card" onclick="Punchline()">
+  <p id="setup" th:text="${joke.setup}"></p>
+  <p id="punchline" th:text="${joke.punchline}" style="display: none;"></p>
+</div>
+</body>
+</html>
